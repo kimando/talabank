@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2016 12:32:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tala.enterprise.talabank.model.db.Account" table="account" catalog="TalaBank" optimistic-lock="version">
+        <id name="accountId" type="java.lang.Integer">
+            <column name="account_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="accountType" class="com.tala.enterprise.talabank.model.db.AccountType" fetch="select">
+            <column name="account_type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="branch" class="com.tala.enterprise.talabank.model.db.Branch" fetch="select">
+            <column name="branch_id" not-null="true" />
+        </many-to-one>
+        <property name="accountName" type="string">
+            <column name="account_name" length="100" not-null="true" />
+        </property>
+        <property name="accountNumber" type="string">
+            <column name="account_number" length="15" not-null="true" />
+        </property>
+        <property name="accountBalance" type="int">
+            <column name="account_balance" not-null="true" />
+        </property>
+        <property name="dateTime" type="timestamp">
+            <column name="date_time" length="19" not-null="true" />
+        </property>
+        <set name="transactions" table="transaction" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_id" not-null="true" />
+            </key>
+            <one-to-many class="com.tala.enterprise.talabank.model.db.Transaction" />
+        </set>
+    </class>
+</hibernate-mapping>

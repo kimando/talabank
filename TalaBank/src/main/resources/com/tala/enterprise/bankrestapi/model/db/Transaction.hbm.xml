@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2016 12:32:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tala.enterprise.talabank.model.db.Transaction" table="transaction" catalog="TalaBank" optimistic-lock="version">
+        <id name="transactionId" type="java.lang.Integer">
+            <column name="transaction_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="account" class="com.tala.enterprise.talabank.model.db.Account" fetch="select">
+            <column name="account_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transactionType" class="com.tala.enterprise.talabank.model.db.TransactionType" fetch="select">
+            <column name="transaction_type_id" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="int">
+            <column name="amount" not-null="true" />
+        </property>
+        <property name="transactionDate" type="date">
+            <column name="transaction_date" length="10" not-null="true" />
+        </property>
+        <property name="transactionTime" type="time">
+            <column name="transaction_time" length="8" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

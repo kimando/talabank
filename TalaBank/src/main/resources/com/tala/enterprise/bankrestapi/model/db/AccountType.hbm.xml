@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2016 12:32:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tala.enterprise.talabank.model.db.AccountType" table="account_type" catalog="TalaBank" optimistic-lock="version">
+        <id name="accountTypeId" type="java.lang.Integer">
+            <column name="account_type_id" />
+            <generator class="identity" />
+        </id>
+        <property name="type" type="string">
+            <column name="type" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="100" not-null="true" />
+        </property>
+        <set name="accounts" table="account" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="account_type_id" not-null="true" />
+            </key>
+            <one-to-many class="com.tala.enterprise.talabank.model.db.Account" />
+        </set>
+    </class>
+</hibernate-mapping>
