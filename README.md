@@ -13,7 +13,7 @@
 4. deploy the generated /TalaBank/talabank/TalaBank/target/TalaBank.war file on Tomcat
 
 # DATABASE CONFIG:
-1. log in your mysql server run the script below
+1. log in your mysql server run the script: /TalaBank/talabank/TalaBank/TalaBank.sql
 
 # YOU SHOULD HAVE THE FOLLOWING TABLES CREATED - THEY ARE RELATED, SO FOLLOWING ORDER 1-5 IS KEY
 1. branch - dummy bank branches in various locations
